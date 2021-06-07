@@ -1,0 +1,85 @@
+
+<div class="register">
+
+  <div class="register1">
+    <mat-toolbar color="primary">
+      <span>
+        Registro
+      </span>
+    </mat-toolbar>
+    <mat-card style="margin-top: 10px">
+      <!-- <span>Complete El Formulario De Registro</span> -->
+    <form [formGroup]="register" >
+      <mat-grid-list cols="6" rowHeight="60px">
+        <mat-grid-tile [colspan]="2" [rowspan]="1" >
+          <mat-form-field color="accent" class="ancho">
+            <mat-label>Usuario</mat-label>
+            <input matInput autocomplete="off" formControlName="username" type="text">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1" >
+          <mat-form-field color="accent" class="ancho">
+            <mat-label>email</mat-label>
+            <input matInput autocomplete="off" formControlName="email" type="text">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="2" [rowspan]="4" >
+          <img src="../../../assets/img/register.png" width="150px" height="150px">
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="2" [rowspan]="1" >
+          <mat-form-field color="accent" class="ancho">
+            <mat-label>Nombre</mat-label>
+            <input matInput autocomplete="off" formControlName="name" type="text">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1" >
+          <mat-form-field color="accent" class="ancho">
+            <mat-label>Apellido</mat-label>
+            <input matInput autocomplete="off" formControlName="lastname" type="text">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1" >
+          <mat-form-field color="accent" class="ancho">
+            <mat-label>Contraseña</mat-label>
+            <input matInput autocomplete="off" formControlName="password" type="password">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1" >
+          <mat-form-field color="accent" class="ancho">
+            <mat-label>Confirmar</mat-label>
+            <input matInput autocomplete="off" formControlName="confirmPassword" type="password">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1" >
+          <mat-form-field color="accent" class="ancho">
+            <mat-label>Pais</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let country of countries " [value]="country.value">
+                {{country.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1" >
+          <mat-form-field color="accent" class="ancho">
+            <mat-label>Provincia</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let province of provinces " [value]="province.value">
+                {{province.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <button type="submit" mat-raised-button  class="ancho alto" color="accent" routerLink="/login" >Volver</button>
+        </mat-grid-tile >
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <button type="submit" mat-raised-button color="primary" class="ancho alto" >Registarce</button>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>
+  </mat-card>
+  </div>
+</div>
