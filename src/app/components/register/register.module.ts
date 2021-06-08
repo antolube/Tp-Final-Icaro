@@ -6,7 +6,6 @@ import { LoginModule } from '../login/login.module';
 import { RouterModule } from '@angular/router';
 
 
-
 @NgModule({
   declarations: [
     ResgisterComponent

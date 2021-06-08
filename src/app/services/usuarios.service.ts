@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Usuario } from '../models/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -71,4 +72,7 @@ export class UsuariosService {
   getUsuarios(){
     return this.usuarios.slice();
   }
+   agregarUsuario(usuarios: Usuario){
+     this.usuarios.unshift(usuarios);
+   }
 }

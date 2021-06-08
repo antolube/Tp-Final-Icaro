@@ -13,6 +13,7 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 export class LoginComponent implements OnInit {
 
   usuarios: Usuario [] =[];
+  hide = true;
 
   form: FormGroup;
   loading= false;
