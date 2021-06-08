@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router} from '@angular/router';
+import { Usuario } from 'src/app/models/usuario';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-login',
@@ -10,10 +12,12 @@ import { Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  usuarios: Usuario [] =[];
+
   form: FormGroup;
   loading= false;
 
-  constructor(private fb :FormBuilder , private _snackbar:MatSnackBar, private router:Router) {
+  constructor(private fb :FormBuilder , private _snackbar:MatSnackBar, private router:Router, private _usuariosService:UsuariosService) {
 
     this.form = this.fb.group({
       usuario:['', Validators.required],
@@ -23,6 +27,10 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit(): void {
+  }
+
+  cargarUsuarios(){
+    this.usuarios = this._usuariosService.getUsuarios();
   }
 
   ingresar(){

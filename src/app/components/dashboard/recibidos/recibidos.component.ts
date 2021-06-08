@@ -1,20 +1,7 @@
-import { CompileShallowModuleMetadata } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Mensaje } from 'src/app/models/message';
 import { MessagesService } from 'src/app/services/messages.service';
-
-// export interface PeriodicElement {
-//   name: string;
-//   position: number;
-//   weight: number;
-//   symbol: string;
-// }
-
-// const listMessage: Mensaje[] = [
-//   // {remitente:"antonio", fecha: "27/4",mensaje:"hola papa",id: 1 },
-
-// ];
 
 @Component({
   selector: 'app-recibidos',

@@ -9,3 +9,23 @@ th{
 .pointer{
   cursor: pointer;
 }
+.recibidos{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #6d6a6a;
+
+
+}
+
+.recibidos1{
+
+  width:80%;
+
+  min-height:100%;
+  // margin: 0 100px ;
+  background-color: #6d6a6a;
+
+}

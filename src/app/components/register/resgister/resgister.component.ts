@@ -19,21 +19,6 @@ interface Country{
 export class ResgisterComponent implements OnInit {
   register: FormGroup;
   panelOpenState = false;
-  states: string[] = [
-    'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware',
-    'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky',
-    'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
-    'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico',
-    'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania',
-    'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-    'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-  ];
-  tiles: any[] = [
-    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
-  ];
   provinces: Province[] = [
     {value: 'Cba-0', viewValue: 'Córdoba'},
     {value: 'Sta.Fe-1', viewValue: 'Santa Fé'},
@@ -56,8 +41,6 @@ export class ResgisterComponent implements OnInit {
       password:['', Validators.required,'((?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*\W)\w.{6,18}\w)'],
       confirmPassword:['', Validators.required,'((?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*\W)\w.{6,18}\w)'],
       email:['', Validators.required,Validators.email],
-      telefono:['', Validators.required,'^[\d ]*$'],
-      address:['', Validators.required,],
       province:['', Validators.required],
       city:['', Validators.required],
 

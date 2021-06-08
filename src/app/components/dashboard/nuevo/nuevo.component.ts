@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SendService } from 'src/app/services/send.service';
-import {MatTableDataSource } from '@angular/material/table';
-import { Mensaje } from 'src/app/models/message';
+import { Usuario } from 'src/app/models/usuario';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 @Component({
   selector: 'app-nuevo',
   templateUrl: './nuevo.component.html',
@@ -9,36 +8,20 @@ import { Mensaje } from 'src/app/models/message';
 })
 export class NuevoComponent implements OnInit {
 
-  mensajesEnviados: Mensaje [] = [];
-
-  // listMessage: Mensaje []=[];
-
-  displayedColumns: string[] = ['remitente', 'fecha', 'mensaje', 'acciones'];
-
-  dataSource!:MatTableDataSource<any>;
-
-  constructor(private _sendService:SendService) { }
+  usuarios: Usuario [] =[];
+  // const mensajes= [];
+  constructor(private _userService: UsuariosService) { }
 
   ngOnInit(): void {
 
+    this.getTraerUsuarios();
 
-    this.cargarMensajesEnviados();
-
-    // this.dataSource = this._messagesService.getMessages();
-    // this.mensajes =this._messagesService.getMessages();
-    // console.log(this.mensajes);
+  }
+  getTraerUsuarios(){
+    this.usuarios = this._userService.getUsuarios();
   }
 
-  cargarMensajesEnviados(){
-
-    this.mensajesEnviados = this._sendService.getMensajesEnviados();
-    this.dataSource = new MatTableDataSource(this.mensajesEnviados);
-  }
-
-  eliminarMensaje(index: number){
-    this._sendService.eliminarMensaje(index);
-    console.log(index);
-    this.cargarMensajesEnviados();
-  }
-
+  // agregarMensaje(mensaje: string){
+  //   this.mensajes.push();
+  // }
 }
