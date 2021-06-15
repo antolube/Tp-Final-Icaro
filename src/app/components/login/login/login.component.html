@@ -10,10 +10,6 @@
         <mat-label>Usuario</mat-label>
         <input matInput autocomplete="off" formControlName="usuario">
       </mat-form-field>
-      <!-- <mat-form-field  color="accent" appearance="fill" class="ancho">
-        <mat-label>Password</mat-label>
-        <input matInput type="password" autocomplete="off" formControlName="password">
-      </mat-form-field> -->
       <mat-form-field appearance="fill" color="accent" class="ancho">
         <mat-label>Password</mat-label>
         <input matInput [type]="hide?'password':'text'" formControlName="password" autocomplete="off" >

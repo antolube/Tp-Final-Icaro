@@ -10,7 +10,7 @@ export class UsuariosService {
       username:'anto',
       name:'pepe',
       lastname:'apellido',
-      password:'admin1234',
+      password:'a',
       confirmPassword:'admin1234',
       email:'anto@gmail.com',
       country:'Argentina',

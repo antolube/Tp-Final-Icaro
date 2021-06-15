@@ -8,6 +8,7 @@ import { NuevoComponent } from './nuevo/nuevo.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MaterialModule } from 'src/app/material/material.module';
 import { NavModule } from '../nav/nav.module';
+import { InteractionsService } from 'src/app/services/interactions.service';
 
 
 
@@ -24,6 +25,7 @@ import { NavModule } from '../nav/nav.module';
     DashboardRoutingModule,
     NavModule,
   ],
+
   exports: [EnviadosComponent,RecibidosComponent,NuevoComponent,DashboardComponent]
 })
 export class DashboardModule { }

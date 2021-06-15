@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Mensaje } from '../models/message';
 
 @Injectable({
   providedIn: 'root'
@@ -7,39 +8,33 @@ export class SendService {
 
   mensajesEnviados=[
     {
-      id:0,
       remitente:'remitente',
-      fecha:'la fecha',
+      fecha:'27/05/2021',
       mensaje:'este mensaje es de prueba par la tabla de Mensajes Enviados, HOlA'
     },
     {
-      id:1,
       remitente:'remitente',
-      fecha:'lafecha',
+      fecha:'27/05/2021',
       mensaje:'este mensaje es de prueba par la tabla de Mensajes Enviados, HOlA'
     },
     {
-      id:2,
       remitente:'remitente',
-      fecha:'lafecha',
+      fecha:'27/05/2021',
       mensaje:'este mensaje es de prueba par la tabla de Mensajes Enviados, HOlA'
     },
     {
-      id:3,
       remitente:'remitente',
-      fecha:'lafecha',
+      fecha:'27/05/2021',
       mensaje:'este mensaje es de prueba par la tabla de Mensajes Enviados, HOlA'
     },
     {
-      id:4,
       remitente:'remitente',
-      fecha:'lafecha',
+      fecha:'27/05/2021',
       mensaje:'este mensaje es de prueba par la tabla de Mensajes Enviados, HOlA'
     },
     {
-      id:5,
       remitente:'remitente',
-      fecha:'lafecha',
+      fecha:'27/05/2021',
       mensaje:'este mensaje es de prueba par la tabla de Mensajes Enviados, HOlA'
     },
   ]
@@ -52,5 +47,9 @@ export class SendService {
 
   eliminarMensaje(index: number){
     this.mensajesEnviados.splice(index,1);
+  }
+
+  agregarMensaje(mensaje:Mensaje){
+    this.mensajesEnviados.unshift(mensaje);
   }
 }

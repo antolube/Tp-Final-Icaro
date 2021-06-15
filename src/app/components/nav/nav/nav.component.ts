@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Usuario } from 'src/app/models/usuario';
-import { UsuariosService } from '../../../services/usuarios.service';
+import { InteractionsService } from 'src/app/services/interactions.service';
+
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -8,16 +8,26 @@ import { UsuariosService } from '../../../services/usuarios.service';
 })
 export class NavComponent implements OnInit {
 
-  usuarios: Usuario [] =[];
-  constructor(private _usuarioService: UsuariosService) { }
+
+  constructor(private _comunicacion:InteractionsService, ) { }
+
+  usuarioMostrar: any = [];
+  login: boolean = false;
 
   ngOnInit(): void {
-    this.usuarioActual();
+    this.reciboComunicacion();
+    this.loginTrue();
   }
 
-  usuarioActual(){
-    return this.usuarios = this._usuarioService.getUsuarios();
+  reciboComunicacion(){
 
+    this.usuarioMostrar = this._comunicacion.getUser();
+    console.log("estoy reciendo este usuario del servicio:",this.usuarioMostrar);
   }
 
+  loginTrue(){
+    if(this.usuarioMostrar.length > 0) return this.login=true;
+    else
+    return this.login=false;
+  }
 }

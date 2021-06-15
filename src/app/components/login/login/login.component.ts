@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router} from '@angular/router';
 import { Usuario } from 'src/app/models/usuario';
+import { InteractionsService } from 'src/app/services/interactions.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
@@ -18,7 +19,12 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   loading= false;
 
-  constructor(private fb :FormBuilder , private _snackbar:MatSnackBar, private router:Router, private _usuariosService:UsuariosService) {
+  constructor(private fb :FormBuilder ,
+    private _snackbar:MatSnackBar,
+    private router:Router,
+    private _usuariosService:UsuariosService,
+    private _interactionsService:InteractionsService,
+    private _comunicacion:InteractionsService) {
 
     this.form = this.fb.group({
       usuario:['', Validators.required],
@@ -26,7 +32,6 @@ export class LoginComponent implements OnInit {
     });
 
    }
-
   ngOnInit(): void {
   }
 
@@ -34,14 +39,18 @@ export class LoginComponent implements OnInit {
     this.usuarios = this._usuariosService.getUsuarios();
   }
 
+
+
   ingresar(){
     console.log(this.form);
     const usuario = this.form.value.usuario;
     const password = this.form.value.password;
 
-    if(usuario == "a" && password == "a" ){
+    if(usuario == "anto" && password == "a" ){
       //redireccionamos al escritorio de usuario
       this.fakelogin();
+      // this.usuarioLogeado();
+      this.comunicoUsuario();
     }else{
       //mostrar mensaje de error
       this.error();
@@ -55,7 +64,6 @@ export class LoginComponent implements OnInit {
         duration:1500,
         horizontalPosition:'center',
         verticalPosition:'top',
-
         }
     );
   }
@@ -70,5 +78,17 @@ export class LoginComponent implements OnInit {
     },1500
     );
   }
-
+  comunicoUsuario(){
+    this._comunicacion.saveUser(this.form.value.usuario);
+    console.log("estoy tomando este dato para pasarlo :",this.form.value.usuario);
+  }
 }
+// onSubmit(){
+//   this._interactionsService.agregarUsuario(this.form.value.usuario);
+//   console.log("estoy por pasar este usuario al servicio:",this.form.value.usuario);
+// }
+
+// usuarioLogeado(){
+//   this._interactionsService.sendUser(this.form.value.usuario);
+//   console.log(this.form.value.usuario);
+// }

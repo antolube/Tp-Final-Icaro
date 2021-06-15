@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { Usuario} from '../../../models/usuario';
@@ -39,7 +40,7 @@ export class ResgisterComponent implements OnInit {
   ];
 
 
-  constructor(private fb: FormBuilder, private router: Router, private _usuariosService:UsuariosService) {
+  constructor(private fb: FormBuilder, private router: Router, private _usuariosService:UsuariosService ,private _snackbar:MatSnackBar) {
 
     this.register = this.fb.group({
       username:['', Validators.required,],
@@ -56,16 +57,7 @@ export class ResgisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  fakelogin(){
-    this.loading= true;
-    setTimeout(()=>{
 
-      //redirecccionamos al al escritorio
-      // this.loading= false;
-      this.router.navigate(['dashboard']);
-    },1500
-    );
-  }
 
   ingresarNuevo(){
     console.log(this.register);
@@ -84,6 +76,33 @@ export class ResgisterComponent implements OnInit {
     console.log(user);
 
     this._usuariosService.agregarUsuario(user);
+    this.fakelogin();
+    this.registroOk();
+
+
   }
+
+  fakelogin(){
+    this.loading= true;
+    setTimeout(()=>{
+
+      //redirecccionamos al al escritorio
+      // this.loading= false;
+      this.router.navigate(['/dashboard']);
+    },1500
+    );
+  }
+
+  registroOk(){
+    this._snackbar.open('Resgistro OK','',
+      {
+        duration:1500,
+        horizontalPosition:'center',
+        verticalPosition:'top',
+
+        }
+    );
+  }
+
 
 }

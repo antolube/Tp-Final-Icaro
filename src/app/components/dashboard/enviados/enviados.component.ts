@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Mensaje } from 'src/app/models/message';
+import { InteractionsService } from 'src/app/services/interactions.service';
 import { SendService } from 'src/app/services/send.service';
+
+
 
 @Component({
   selector: 'app-enviados',
@@ -18,16 +21,13 @@ export class EnviadosComponent implements OnInit {
 
   dataSource!:MatTableDataSource<any>;
 
-  constructor(private _sendService:SendService) { }
+  constructor(private _sendService:SendService ) { }
 
   ngOnInit(): void {
 
 
     this.cargarMensajesEnviados();
-
-    // this.dataSource = this._messagesService.getMessages();
-    // this.mensajes =this._messagesService.getMessages();
-    // console.log(this.mensajes);
+    // this.recargar();
   }
 
   cargarMensajesEnviados(){
@@ -38,8 +38,11 @@ export class EnviadosComponent implements OnInit {
 
   eliminarMensaje(index: number){
     this._sendService.eliminarMensaje(index);
-    console.log(index);
     this.cargarMensajesEnviados();
   }
+
+  // recargar(){
+  //   location.reload();
+  // }
 
 }

@@ -1,7 +1,10 @@
 
 <div class="recibidos">
   <div class="recibidos1">
-    <h1>la cantidad de mensajes es {{mensajes.length}}</h1>
+    <h1>la cantidad de mensajes es {{mensajes.length}} {{usuarioMostrar}} </h1>
+    <!-- <div *ngFor="let usuario of usuarioMostrar">
+      <h3>{{usuarioMostrar}}</h3>
+    </div> -->
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
       <!--- Note that these columns can be defined in any order.
