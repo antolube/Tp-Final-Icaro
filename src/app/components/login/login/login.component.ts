@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
     const usuario = this.form.value.usuario;
     const password = this.form.value.password;
 
-    if(usuario == "anto" && password == "a" ){
+    if(usuario == "antonio" && password == "a" ){
       //redireccionamos al escritorio de usuario
       this.fakelogin();
       // this.usuarioLogeado();

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { InteractionsService } from 'src/app/services/interactions.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { Usuario} from '../../../models/usuario';
 
@@ -40,7 +41,12 @@ export class ResgisterComponent implements OnInit {
   ];
 
 
-  constructor(private fb: FormBuilder, private router: Router, private _usuariosService:UsuariosService ,private _snackbar:MatSnackBar) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private _usuariosService:UsuariosService ,
+    private _snackbar:MatSnackBar,
+    private _comunicacion:InteractionsService) {
 
     this.register = this.fb.group({
       username:['', Validators.required,],
@@ -78,6 +84,7 @@ export class ResgisterComponent implements OnInit {
     this._usuariosService.agregarUsuario(user);
     this.fakelogin();
     this.registroOk();
+    this.comunicoUsuario();
 
 
   }
@@ -85,7 +92,6 @@ export class ResgisterComponent implements OnInit {
   fakelogin(){
     this.loading= true;
     setTimeout(()=>{
-
       //redirecccionamos al al escritorio
       // this.loading= false;
       this.router.navigate(['/dashboard']);
@@ -99,10 +105,12 @@ export class ResgisterComponent implements OnInit {
         duration:1500,
         horizontalPosition:'center',
         verticalPosition:'top',
-
         }
     );
   }
-
+  comunicoUsuario(){
+    this._comunicacion.saveUser(this.register.value.username);
+    console.log("estoy tomando este dato para pasarlo :",this.register.value.username);
+  }
 
 }

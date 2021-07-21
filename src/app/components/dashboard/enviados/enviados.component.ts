@@ -15,25 +15,26 @@ export class EnviadosComponent implements OnInit {
 
   mensajesEnviados: Mensaje [] = [];
 
-  // listMessage: Mensaje []=[];
 
   displayedColumns: string[] = ['remitente', 'fecha', 'mensaje', 'acciones'];
 
   dataSource!:MatTableDataSource<any>;
 
-  constructor(private _sendService:SendService ) { }
+  constructor(private _sendService:SendService , private _interactionsService:InteractionsService) { }
 
   ngOnInit(): void {
 
 
     this.cargarMensajesEnviados();
-    // this.recargar();
+
+
   }
 
   cargarMensajesEnviados(){
 
     this.mensajesEnviados = this._sendService.getMensajesEnviados();
     this.dataSource = new MatTableDataSource(this.mensajesEnviados);
+    // this.recargar();
   }
 
   eliminarMensaje(index: number){
@@ -42,7 +43,6 @@ export class EnviadosComponent implements OnInit {
   }
 
   // recargar(){
-  //   location.reload();
+  //   this._interactionsService.envioMsj();
   // }
-
 }

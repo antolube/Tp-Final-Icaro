@@ -41,15 +41,16 @@ export class SendService {
 
   constructor() { }
 
-  getMensajesEnviados(){
+  agregarMensaje(mensaje:Mensaje){
+    this.mensajesEnviados.unshift(mensaje);
     return this.mensajesEnviados.slice();
   }
 
+  getMensajesEnviados(){
+    return this.mensajesEnviados.slice();
+  }
   eliminarMensaje(index: number){
     this.mensajesEnviados.splice(index,1);
   }
 
-  agregarMensaje(mensaje:Mensaje){
-    this.mensajesEnviados.unshift(mensaje);
-  }
 }

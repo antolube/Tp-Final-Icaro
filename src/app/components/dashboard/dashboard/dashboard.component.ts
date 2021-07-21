@@ -10,14 +10,20 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 })
 export class DashboardComponent implements OnInit {
 
+  usuarioMostrar: any = [];
 
 //  usaurioMostrar:string = '';
 
-  constructor( public _interactionsService:InteractionsService ) { }
+  constructor( private _comunicacion:InteractionsService,  ) { }
 
   ngOnInit(): void {
-    // this.reciboComunicacion();
+    this.reciboComunicacion();
     // this.cargarUsuario();
+  }
+
+  reciboComunicacion(){
+    this.usuarioMostrar = this._comunicacion.getUser();
+    console.log("estoy reciendo este usuario del servicio:",this.usuarioMostrar);
   }
 
   // cargarUsuario(){

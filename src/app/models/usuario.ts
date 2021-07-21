@@ -1,4 +1,5 @@
 export interface Usuario{
+
   username:string;
   name:string;
   lastname:string;
@@ -7,4 +8,5 @@ export interface Usuario{
   email:string;
   country:string;
   city:string;
-}
+
+};

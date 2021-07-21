@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Mensaje } from 'src/app/models/message';
 import { Usuario } from 'src/app/models/usuario';
+import { InteractionsService } from 'src/app/services/interactions.service';
 
 import { SendService } from 'src/app/services/send.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
@@ -19,13 +20,15 @@ export class NuevoComponent implements OnInit {
   form: FormGroup;
 
 
-  // mensajes: Mensaje[] = [];
+  mensajes: Mensaje[] = [];
 
   constructor(private _userService: UsuariosService,
     private _sendService:SendService,
     private fb: FormBuilder,
     private router: Router,
     private _snackbar: MatSnackBar,
+    private _interactionsService:InteractionsService,
+
     ) {
 
     this.form = this.fb.group({
@@ -40,7 +43,7 @@ export class NuevoComponent implements OnInit {
   ngOnInit(): void {
 
     this.getTraerUsuarios();
-    this.SendMsj();
+    // this.SendMsj();
 
 
   }
@@ -50,18 +53,39 @@ export class NuevoComponent implements OnInit {
   }
 
   SendMsj(){
-
-
     const mensajes : Mensaje = {
       remitente:this.form.value.remitente,
       fecha:this.form.value.fecha,
       mensaje:this.form.value.mensaje,
     }
     this._sendService.agregarMensaje(mensajes);
+    this.fakeSend();
+    // this.router.navigate(['/dashboard']);
+    this._interactionsService.nvoMsj(this.form.value.mensaje);
+    console.log("estoy enviando el mensaje:",this.mensajes);
+
+  }
+
+  fakeSend(){
+    this.loading= true;
     this.form.reset();
+    setTimeout(()=>{
+      //redirecccionamos al al escritorio
+      this._snackbar.open('Mensaje Enviado','',
+      {
+        duration:1500,
+        horizontalPosition:'center',
+        verticalPosition:'top',
+      });
+      this.loading= false;
 
-    }
+    },1500
+    );
+  }
 
+  infoNewMsj(){
+
+  }
 }
 
 

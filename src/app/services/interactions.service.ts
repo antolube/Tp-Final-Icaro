@@ -1,14 +1,16 @@
-import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Subject } from 'rxjs';
-import { Usuario } from '../models/usuario';
+import { Mensaje } from '../models/message';
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class InteractionsService {
 
   user: [] =[];
+
+  mensajes: Mensaje [] = [];
 
   private _comunicacion= new Subject <[]>();
   comunicacionUsuario$= this._comunicacion.asObservable();
@@ -23,40 +25,19 @@ export class InteractionsService {
     return localStorage.getItem('currentUser');
   }
 
-  // loginTrue(){
-  //    const login = true;
-  // };
+  private _informationNew= new Subject<[]>();
+  informacion$= this._informationNew.asObservable();
 
+  nvoMsj(mensajes :Mensaje){
+    this._informationNew.next();
+    console.log("estoy recibiendo el mensaje")
+  }
+
+  envioMsj(){
+    return this.mensajes;
+  }
   constructor() {
   }
+
+
 }
-// private usuario:any[]=[];
-// private usuario$:Subject<any[]>;
-
-// // getUsurioIngresado(){
-  // //   return this.usuario;
-  // // }
-
-  // this.usuario = [];
-  // this.usuario$ = new Subject();
-
-  // agregarUsuario(aUsuario :any){
-    //   this.usuario.push(aUsuario);
-    //   this.usuario$.next(this.usuario)
-    //   console.log("estoy en agregarusuario:", aUsuario)
-    // }
-    // getUsuarios$():Observable<any[]>{
-      //   return this.usuario$.asObservable();
-      // }
-// private _usuarioLogeadoSource = new Subject<string>();
-// usuarioLogeado$= this._usuarioLogeadoSource.asObservable();
-// sendUser(usuario:string){
-//   this._usuarioLogeadoSource.next(usuario);
-//   console.log("el nombre que paso es :",usuario);
-// }
-// sendUsuario(usuario: string){
-//   this._comunicacion.next(usuario);
-//   console.log("estoy recibiendo al usuario:",usuario);
-// }
-// getUsuario$(){//   return this.comunicacionUsuario$;
-// }

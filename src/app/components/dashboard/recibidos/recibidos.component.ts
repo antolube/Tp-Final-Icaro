@@ -43,6 +43,7 @@ export class RecibidosComponent implements OnInit {
     console.log(index);
     this.cargarMensajes();
   }
+
 }
 // this.muestroUsuario();
 // this._comunicacion.comunicacionUsuario$.subscribe(usuario =>{
