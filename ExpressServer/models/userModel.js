@@ -30,34 +30,34 @@ const  UserModel = sequelizeConnection.define(
         allowNull: false,
         fields: 'last_name'
     },
-    country: {
-        type:Sequelize.INTEGER,
-        allowNull: true,
-        fields: 'country'
-    },
-    city: {
-        type:Sequelize.INTEGER,
-        allowNull: true,
-        fields: 'city'
-    },
     email: {
         type:Sequelize.STRING,
         allowNull: true,
         fields: 'email'
     },
-    condition: {
-        type:Sequelize.STRING,
-        allowNull: false,
-        fields: 'condition'
-    },
+    // condition: {
+    //     type:Sequelize.STRING,
+    //     allowNull: false,
+    //     fields: 'condition'
+    // },
     createdAt: {
         type: Sequelize.DATE,
         field: 'created_at'
-      },
-      updatedAt: {
-        type: Sequelize.DATE,
-        field: 'updated_at'
-      }
+    },
+    updatedAt: {
+      type: Sequelize.DATE,
+      field: 'updated_at'
+    },
+    country: {
+      type:Sequelize.INTEGER,
+      allowNull: true,
+      fields: 'country'
+    },
+    city: {
+      type:Sequelize.INTEGER,
+      allowNull: true,
+      fields: 'city'
+    },
 },
 {
     tableName:'users',
